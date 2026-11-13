@@ -102,7 +102,7 @@ spv_result_t ValidateAssumeTrue(ValidationState_t& _, const Instruction* inst) {
   const auto operand_type_id = _.GetOperandTypeId(inst, 0);
   if (!operand_type_id || !_.IsBoolScalarType(operand_type_id)) {
     return _.diag(SPV_ERROR_INVALID_ID, inst)
-           << "Value operand of OpAssumeTrueKHR must be a boolean scalar";
+           << "Condition operand of OpAssumeTrueKHR must be a boolean scalar";
   }
   return SPV_SUCCESS;
 }
@@ -119,12 +119,12 @@ spv_result_t ValidateExpect(ValidationState_t& _, const Instruction* inst) {
   if (_.GetOperandTypeId(inst, 2) != result_type) {
     return _.diag(SPV_ERROR_INVALID_ID, inst)
            << "Type of Value operand of OpExpectKHR does not match the result "
-              "type ";
+              "type";
   }
   if (_.GetOperandTypeId(inst, 3) != result_type) {
     return _.diag(SPV_ERROR_INVALID_ID, inst)
            << "Type of ExpectedValue operand of OpExpectKHR does not match the "
-              "result type ";
+              "result type";
   }
   return SPV_SUCCESS;
 }

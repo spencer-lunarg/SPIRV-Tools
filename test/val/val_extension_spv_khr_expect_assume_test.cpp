@@ -174,8 +174,9 @@ TEST_F(ValidateSpvExpectAssumeKHR, AssumeTrueKHR_OperandMustBeBool) {
   EXPECT_NE(SPV_SUCCESS, ValidateInstructions());
   EXPECT_THAT(
       getDiagnosticString(),
-      HasSubstr("Value operand of OpAssumeTrueKHR must be a boolean scalar\n"
-                "  OpAssumeTrueKHR %uint_1\n"));
+      HasSubstr(
+          "Condition operand of OpAssumeTrueKHR must be a boolean scalar\n"
+          "  OpAssumeTrueKHR %uint_1\n"));
 }
 
 TEST_F(ValidateSpvExpectAssumeKHR, ExpectKHR_RequiresExpectAssumeCapability) {
@@ -267,7 +268,7 @@ TEST_F(ValidateSpvExpectAssumeKHR, ExpectKHR_Value0MustMatchResultType) {
   EXPECT_NE(SPV_SUCCESS, ValidateInstructions());
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Type of Value operand of OpExpectKHR does not match "
-                        "the result type \n"
+                        "the result type\n"
                         "  %8 = OpExpectKHR %uint %float_0 %float_0\n"));
 }
 
@@ -298,7 +299,7 @@ TEST_F(ValidateSpvExpectAssumeKHR, ExpectKHR_Value1MustMatchResultType) {
   EXPECT_NE(SPV_SUCCESS, ValidateInstructions());
   EXPECT_THAT(getDiagnosticString(),
               HasSubstr("Type of ExpectedValue operand of OpExpectKHR does not "
-                        "match the result type \n"
+                        "match the result type\n"
                         "  %9 = OpExpectKHR %uint %uint_0 %float_0\n"));
 }
 
